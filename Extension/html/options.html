@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- 
+	Copyright Jeremiah Megel and Ben Cunningham 2012-2013
+	
+	Incognito This! is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	Incognito This! is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with Incognito This!. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html itemscope itemtype="http://schema.org/Product" lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="stylesheet" type="text/css" href="../css/options.css" />
+<link rel="shortcut icon" href="../images/logo/favicon.ico" />
+<title>Incognito This! - Options</title>
+<meta itemprop="name" content="Incognito This!">
+<meta itemprop="description" content="Incognito This! is really useful for switching between private and normal browsing in Chrome! Check it out!">
+<link rel="canonical" href="https://chrome.google.com/webstore/detail/icnaplnkjfjncegmphmlfpggildllbho" />
+</head>
+<body>
+	<header>
+		<img alt="Incognito This!" src="../images/logo/67.png" />
+		<h1>
+			<a href="https://chrome.google.com/webstore/detail/icnaplnkjfjncegmphmlfpggildllbho" target="_blank">Incognito This!</a> - Options
+		</h1>
+	</header>
+	<section id="preferences">
+		<header>
+			<h2>Preferences</h2>
+		</header>
+		<div>
+			<div>
+				<section>
+					<header>When To Switch</header>
+					<section>
+						<header>
+							<input id="doubleClick" type="checkbox" />
+						</header>
+						<div>
+							<label for="doubleClick">Double-click the toolbar button to switch the entire window.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input id="useKey" type="checkbox" />
+						</header>
+						<div>
+							<label for="useKey">Type <kbd>Ctrl + B</kbd> to switch the currently selected tab(s).</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input id="useContext" type="checkbox" />
+						</header>
+						<div>
+							<label for="useContext">Use the context (right-click) menu to switch the currently selected tab(s).</label>
+						</div>
+					</section>
+					<section id="autoTermsContainer">
+						<header>
+							<input id="autoIncog" type="checkbox" />
+						</header>
+						<div>
+							<label for="autoIncog">Automatically switch tabs with these keywords in their URLs to Incognito (separated by commas):</label>
+							<div>
+								<textarea disabled="disabled" id="autoTerms" spellcheck="false"></textarea>
+								<ul></ul>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<header>During Switching</header>
+					<section>
+						<header>
+							<input checked="checked" id="closeWin" type="checkbox" />
+						</header>
+						<div>
+							<label for="closeWin">Close the original tab.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input id="alwaysNewWin" type="checkbox" />
+						</header>
+						<div>
+							<label for="alwaysNewWin">Open all tabs in a new window.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input class="incogAccessNeededInput" id="maximize" type="checkbox" />
+						</header>
+						<div class="incogAccessNeededDiv">
+							<label class="incogAccessNeededLabel" for="maximize">Maximize windows created by Incognito This!</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input id="clearHist" type="checkbox" />
+						</header>
+						<div>
+							<label for="clearHist">Clear the original page's history.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input checked="checked" disabled="disabled" id="clearTab" type="checkbox" />
+						</header>
+						<div>
+							<label for="clearTab">Clear the original tab's history.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input id="clearSession" type="checkbox" />
+						</header>
+						<div>
+							<label for="clearSession">Clear the original page's session cookies.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input disabled="disabled" id="clearCookies" type="checkbox" />
+						</header>
+						<div>
+							<label for="clearCookies">Clear <strong>all</strong> of the orginal page's cookies.
+							</label>
+						</div>
+					</section>
+				</section>
+				<section>
+					<header>After Switching</header>
+					<section>
+						<header>
+							<input id="recent" type="checkbox" />
+						</header>
+						<div>
+							<label for="recent">Block tabs closed by Incognito This! from being reopened, and hide them from the "Recently Closed" list.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input class="incogAccessNeededInput" id="autoClose" type="checkbox" />
+						</header>
+						<div class="incogAccessNeededDiv">
+							<label for="autoClose">Close Incognito tabs opened with Incognito This! after </label><input class="incogAccessNeededInput" disabled="disabled" id="autoCloseMin" max="999"
+								min="0" step="1" type="number" value="10" /><label for="autoClose"> minutes and </label><input class="incogAccessNeededInput" disabled="disabled" id="autoCloseSec" min="0"
+								max="59" step="1" type="number" value="0" /><label class="incogAccessNeededLabel" for="autoClose"> seconds of inactivity.</label>
+						</div>
+					</section>
+					<section>
+						<header>
+							<input checked="checked" class="incogAccessNeededInput" disabled="disabled" id="autoCloseAll" type="checkbox" />
+						</header>
+						<div>
+							<label for="autoCloseAll">Close <strong>all</strong> inactive Incognito tabs, not only those opened with Incognito This!</label>
+						</div>
+					</section>
+				</section>
+				<footer>
+					<input type="button" value="Save" />
+				</footer>
+			</div>
+		</div>
+	</section>
+	<section id="faq">
+		<header>
+			<h2>Frequently Asked Questions</h2>
+		</header>
+		<div>
+			<section>
+				<header>How do I switch multiple tabs at once?</header>
+				<section>While holding the Control key (Windows/Linux) or Command key (Mac) select the tabs that you want to switch (or select a range
+					of tabs by holding the Shift key while selecting tabs), then click the Incognito This! toolbar button. You can also use the Omnibox to switch the
+					entire window (or all windows) with a single command (see next question).</section>
+			</section>
+			<section>
+				<header>How do I use Incognito This! with Chrome's Omnibox (URL bar)?</header>
+				<section>Select all the text currently inside the Omnibox, and delete it. Then type "incognito" (without the quotes) followed by the
+					space bar or Tab key, and enter a command specifying what scope of tabs you would like to be switched (such as "tab" [currently active tab],
+					"tabs" [all selected tabs within the window {see previous question}], "window" [the current window], or "all" [every tab open in Chrome]), a URL,
+					or a Google search query, or enter "options" to open this Options page. You can also begin typing the name or URL of a bookmark or history item
+					and it will appear in the list of options beneath the Omnibox. The first option in this list under "Run Incognito This! command:…" will be the
+					one that Incognito This! will execute when the Enter key is pressed.</section>
+			</section>
+			<section>
+				<header>How do I enable Incognito This! to run in Incognito mode for full functionality?</header>
+				<section>
+					Go to the <a href="chrome://chrome/extensions/" target="_blank">Extension Manager</a>, find the section for Incognito This!, and check the box
+					next to "Allow in incognito". Checking the box next to "Allow access to file URLs" will also help Incognito This! function more well, but it is
+					generally not needed in order to work smoothly.
+				</section>
+			</section>
+			<section>
+				<header>I want to use Incognito This!, but I don't want other people to know that I have it. What can I do to hide it?</header>
+				<section>
+					Right-click (Windows/Linux) or Control-click (Mac) the Incognito This! toolbar button and select "Hide Button" from the menu that appears. You
+					can continue to use Incognito This! by entering commands via the Omnibox (see previous question) or enabling one of the options above to switch
+					tabs with a key command or the context menu. If you want to unhide the button, go to the <a href="chrome://chrome/extensions/" target="_blank">Extension
+						Manager</a>, find the section for Incognito This!, and click the "Show button" button within it.
+				</section>
+			</section>
+			<section>
+				<header>Does the "Save" button actually do anything?</header>
+				<section>No. All of the preferences automatically save as soon as you change them. That button is just there to make you comfortable in
+					case you want to feel sure that they saved. Seriously, though, that button does absolutely nothing.</section>
+			</section>
+			<section>
+				<header>I have a problem/question/suggestion regarding Incognito This! How can I contact you?</header>
+				<section>
+					You can go to our <a href="https://chrome.google.com/webstore/support/icnaplnkjfjncegmphmlfpggildllbho" target="_blank">support page</a> on the
+					Chrome Web Store or our <a href="https://plus.google.com/113273969110303834707/posts" target="_blank">Google+ page</a> to leave a comment to help
+					anyone who can see it, or you can contact us privately by sending an e‑mail to <a href="mailto:incognitothis@jeremiahm.com" target="_blank">incognitothis@jeremiahm.com</a>.
+				</section>
+			</section>
+			<section>
+				<header>What was the worst part of making this extension?</header>
+				<section>Writing this FAQ. Seriously, this is really boring, and I have no idea how much detail I need to go into for each question.
+					None of these questions are even frequently asked. People are too shy to say anything, so I just had to make stuff up. Thanks for taking the time
+					to read it, though!</section>
+			</section>
+			<section>
+				<header>This extension is awesome. How can I help support it?</header>
+				<section>
+					Give us a <a href="https://chrome.google.com/webstore/detail/icnaplnkjfjncegmphmlfpggildllbho/reviews" target="_blank">review</a> on the Chrome
+					Web Store, or spread the word by telling your friends about it using the social buttons below! If you're feeling really generous, donate to us
+					with PayPal using the "Donate" button at the bottom!
+				</section>
+			</section>
+		</div>
+	</section>
+	<section id="social">
+		<header>
+			<h2>Help us out!</h2>
+		</header>
+		<div></div>
+	</section>
+	<script id="optionsScript" src="../javascript/visible/options.js" type="text/javascript"></script>
+</body>
+</html>

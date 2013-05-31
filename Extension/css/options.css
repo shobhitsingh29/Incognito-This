@@ -1,0 +1,310 @@
+/*
+	Copyright Jeremiah Megel and Ben Cunningham 2012-2013
+	
+	Incognito This! is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	Incognito This! is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with Incognito This!. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+em {
+	font-style: italic;
+}
+
+kbd {
+	font-family: "Courier New", Courier, monospace;
+}
+
+strong {
+	font-weight: bold;
+	vertical-align: bottom;
+}
+
+body {
+	background-color: #FFF;
+	color: #000;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 80%;
+	margin: 10px 0;
+}
+
+body>header {
+	height: 80px;
+	margin: 1.5em auto;
+	text-align: center;
+}
+
+body>header>img {
+	height: 67px;
+	width: 67px;
+}
+
+body>header>h1 {
+	display: inline-block;
+	font-size: 156%;
+	font-weight: bold;
+	height: 80px;
+	margin: 0;
+	vertical-align: middle;
+}
+
+body>header>h1>a {
+	background-color: transparent;
+	color: inherit;
+	text-decoration: none;
+}
+
+body>section a {
+	background-color: transparent;
+	color: #00F;
+	text-decoration: none;
+}
+
+body>section a:hover {
+	background-color: transparent;
+	color: #44F;
+}
+
+body>section>header {
+	background-color: #EBEFF9;
+	border-top: 1px solid #B5C7DE;
+	color: inherit;
+	padding: 3px 0 2px 0;
+	font-weight: bold;
+}
+
+body>section>header>h2 {
+	background-color: transparent;
+	background-position: 4px top;
+	background-repeat: no-repeat;
+	background-size: auto 14px;
+	color: inherit;
+	display: block;
+	font-size: 110%;
+	height: 16px;
+	margin: auto;
+	text-indent: 22px;
+	width: 600px;
+}
+
+body>section>div {
+	background-color: #F8F8F8;
+	color: inherit;
+	margin: auto;
+	padding: 20px 25px;
+	width: 550px;
+}
+
+body>section:last-of-type>div {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#preferences>header>h2 {
+	background-image: url("../images/options/sections/preferences.png");
+}
+
+#preferences>div>div {
+	opacity: 0;
+	-webkit-transition: opacity 1s;
+	visibility: hidden;
+	width: 530px;
+}
+
+#preferences>div>div>section>header {
+	font-style: italic;
+	margin-bottom: 5px;
+	vertical-align: top;
+}
+
+#preferences>div>div>section>section {
+	margin-left: 20px;
+	margin-bottom: 5px;
+	vertical-align: top;
+}
+
+#preferences>div>div>section>section.indented {
+	margin-left: 55px;
+}
+
+#preferences>div>div>section>section>header {
+	display: inline-block;
+}
+
+#preferences>div>div>section>section>header>input {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	width: 15px;
+}
+
+#preferences>div>div>section>section>div {
+	display: inline;
+	left: 20px;
+	position: relative;
+	margin-left: -20px;
+}
+
+#preferences>div>div>section>section>div>label {
+	position: relative;
+	top: -4px;
+	vertical-align: middle;
+}
+
+#preferences>div>div>section>section>div.noIncogAccess>*:not(.accessNeededNotice) {
+	text-decoration: line-through;
+}
+
+#preferences>div>div>section>section>div>label.accessNeededNotice {
+	font-style: italic;
+}
+
+#preferences>div>div>section>section>div>input[type=number] {
+	background-color: transparent;
+	border: 0;
+	color: inherit;
+	padding: 0;
+	position: relative;
+	top: -2px;
+}
+
+#autoCloseMin {
+	width: 38px;
+}
+
+#autoCloseSec {
+	width: 32px;
+}
+
+#autoTermsContainer>div>div {
+	display: inline-block;
+	vertical-align: top;
+	width: 400px;
+}
+
+#autoTerms {
+	background-color: transparent;
+	border: 1px solid;
+	color: inherit;
+	display: block;
+	font-family: Helvetica, Arial, sans-serif, arial, sans-serif;
+	height: 3em;
+	overflow: auto;
+	padding: 2px;
+	resize: none;
+	-webkit-transition: height 0.25s, width 0.25s;
+	width: 394px;
+	display: block;
+}
+
+#autoTerms:disabled {
+	height: 16px;
+	overflow: hidden;
+	width: 50px;
+}
+
+#autoTermsContainer>div>div>ul {
+	background-color: #D4D4D4;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: inherit;
+	display: block;
+	list-style: none;
+	margin: 0 0 0 1px;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+}
+
+#autoTermsContainer>div>div>ul>li {
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	padding-left: 4px;
+	padding-right: 4px;
+	text-align: justify;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 392px;
+}
+
+#autoTermsContainer>div>div>ul>li:hover {
+	background-color: #E5E5E5;
+	color: inherit;
+	cursor: pointer;
+}
+
+#autoTermsContainer>div>div>ul>li:last-of-type {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+#autoTermsContainer>div>div>ul>li>header {
+	display: inline-block;
+	width: 13px;
+}
+
+#preferences>div>div>footer {
+	display: block;
+	text-align: center;
+}
+
+#faq>header>h2 {
+	background-image: url("../images/options/sections/faq.png");
+}
+
+#faq>div {
+	text-align: justify;
+}
+
+#faq>div>section {
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+
+#faq>div>section:last-of-type {
+	padding-bottom: 0;
+}
+
+#faq>div>section>header {
+	font-weight: bold;
+}
+
+#faq>div>section>section {
+	padding-left: 20px;
+}
+
+#social>header>h2 {
+	background-image: url("../images/options/sections/social.png");
+}
+
+#social>div {
+	text-align: center;
+}
+
+#faceBookiFrame,#twitteriFrame,#___plusone_0,#social>div>.FlattrButton {
+	margin: 0 3px !important;
+}
+
+#social>div>.socialButtoniFrame {
+	border: none;
+	overflow: hidden;
+}
+
+#faceBookiFrame {
+	height: 62px;
+	width: 47px;
+}
+
+#twitteriFrame {
+	height: 62px;
+	width: 56px;
+}
