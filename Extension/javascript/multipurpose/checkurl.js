@@ -14,6 +14,13 @@
     You should have received a copy of the GNU General Public License
     along with Incognito This!. If not, see <http://www.gnu.org/licenses/>.
 */
+/*
+	This script is included in [javascript/background/background.js] and 
+		[javascript/visible/options.js].
+	This function checks if a URL can be switched to Incognito mode. (No
+		URLs of the "chrome://" scheme can be opened in Incognito, except
+		for "chrome://newtab".)
+*/
 function checkUrl(url) {
 	if ((url !== undefined) && (url !== null)) {
 		return ((url.toLowerCase().indexOf("chrome") != 0) || (url.toLowerCase().substr(0,15) == "chrome://newtab"));

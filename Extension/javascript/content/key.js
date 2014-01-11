@@ -14,6 +14,13 @@
     You should have received a copy of the GNU General Public License
     along with Incognito This!. If not, see <http://www.gnu.org/licenses/>.
 */
+/*
+	This script is included in web pages to tell the background script that
+		the web page is actively being used so that the background script
+		knows how long a page has been idle for the "Close Incognito tabs
+		opened with Incognito This! after ___ minutes and ___ seconds of
+		inactivity." option.
+*/
 var keyDefined;
 if (keyDefined != true) {
 	keyDefined = true;

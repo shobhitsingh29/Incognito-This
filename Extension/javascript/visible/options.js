@@ -14,20 +14,30 @@
     You should have received a copy of the GNU General Public License
     along with Incognito This!. If not, see <http://www.gnu.org/licenses/>.
 */
+/*
+	This script is included in the [html/options/options.html] page. (The
+		extension's Options page.)
+*/
 var suggestionsUl;
 window.addEventListener("load", function(){
+	// Load the checkUrl() function from the relevant script file.
 	var checkUrlScript = document.createElement("script");
 	checkUrlScript.id = "checkUrlScript";
 	checkUrlScript.src = chrome.extension.getURL("javascript/multipurpose/checkurl.js");
 	checkUrlScript.type = "text/javascript";
 	document.body.appendChild(checkUrlScript);
 
+	// Load the activity-checking script.
 	var keyScript = document.createElement("script");
 	keyScript.id = "keyScript";
 	keyScript.src = chrome.extension.getURL("javascript/content/key.js");
 	keyScript.type = "text/javascript";
 	document.body.appendChild(keyScript);
 
+	// Fill the form elements with the user's preferences or the default
+	//		preferences if the user has not set a preference, and set
+	//		them up to change their respective localStorage values when
+	//		changed.
 	setUp("closeWin");
 	setUp("alwaysNewWin");
 	setUp("recent", []);
@@ -51,6 +61,10 @@ window.addEventListener("load", function(){
 		}
 	});
 
+	// Check if the extension has been allowed to run in Incognito mode
+	//		(through the extension-manager). If not, certain options
+	//		that require Incognito access will be disabled with an
+	//		explanation at the side.
 	chrome.extension.isAllowedIncognitoAccess(function(hasIncognitoAccess){
 		if (!(hasIncognitoAccess)){
 			var incogAccessNeededInputs = document.getElementsByClassName("incogAccessNeededInput");
@@ -72,12 +86,16 @@ window.addEventListener("load", function(){
 		}
 	});
 
+	// Calculate and fill the minute/second fields.
 	var autoCloseTime = ((localStorage["autoCloseTime"] != undefined)?localStorage["autoCloseTime"]:600000);
 	document.getElementById("autoCloseMin").value = Math.floor((autoCloseTime / 1000) / 60);
 	document.getElementById("autoCloseSec").value = ((autoCloseTime / 1000) % 60);
 
+	// Fill the keywords field with the user's preferences, if they exist.
 	document.getElementById("autoTerms").value = ((localStorage["autoTerms"] != undefined)?localStorage["autoTerms"]:"");
 
+	// Set up the listener to convert the values from the minute/second
+	//		fields to milliseconds and store them in localStorage.
 	var numbers = ["autoCloseMin", "autoCloseSec"];
 	for ( var n in numbers){
 		listenStore(numbers[n], function(){
@@ -85,40 +103,51 @@ window.addEventListener("load", function(){
 		});
 	}
 
+	// Set up the listener to display a list of URL suggestions for the
+	//		keywords textbox when the user does anything with the
+	//		textbox.
 	suggestionsUl = document.getElementById("autoTermsContainer").getElementsByTagName("div")[0].getElementsByTagName("ul")[0];
 	listenStore("autoTerms", suggest);
 	document.getElementById("autoTerms").addEventListener("focus", suggest);
 
+	// If the user clicks outside of the keywords textbox, hide the list
+	//		of URL suggestions.
 	window.addEventListener("click", function(e){
 		if (e.target.id != "autoTerms"){
 			clearBookmarks();
 		}
 	});
 
+	// Once all of the preferences and listeners have been loaded, make the
+	//		preferences section visible.
 	var preferencesArea = document.getElementById("preferences").getElementsByTagName("div")[0].getElementsByTagName("div")[0];
 	preferencesArea.style.visibility = "visible";
 	preferencesArea.style.opacity = "1";
 
 	var socialSection = document.getElementById("social").getElementsByTagName("div")[0];
 
+	// Add the Facebook "Like" button.
 	var faceBookiFrame = document.createElement("iframe");
 	faceBookiFrame.className = "socialButtoniFrame";
 	faceBookiFrame.id = "faceBookiFrame";
 	faceBookiFrame.src = "https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Ficnaplnkjfjncegmphmlfpggildllbho&send=false&layout=box_count&width=47&show_faces=false&action=like&colorscheme=light&font=arial&height=62";
 	socialSection.appendChild(faceBookiFrame);
 
+	// Add the Twitter "Tweet" button.
 	var twitteriFrame = document.createElement("iframe");
 	twitteriFrame.className = "socialButtoniFrame";
 	twitteriFrame.id = "twitteriFrame";
 	twitteriFrame.src = "https://platform.twitter.com/widgets/tweet_button.html?url=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Ficnaplnkjfjncegmphmlfpggildllbho&text=Incognito%20This!%20is%20really%20useful%20for%20switching%20between%20private%20and%20normal%20browsing%20in%20Chrome!%20Check%20it%20out!&count=vertical&dnt=false&size=medium";
 	socialSection.appendChild(twitteriFrame);
 
+	// Add the Google+ "+1" button.
 	var gPlusOne = document.createElement("div");
 	gPlusOne.className = "g-plusone";
 	gPlusOne.setAttribute("data-size", "tall");
 	gPlusOne.setAttribute("data-href", "https://chrome.google.com/webstore/detail/icnaplnkjfjncegmphmlfpggildllbho");
 	socialSection.appendChild(gPlusOne);
 
+	// Add the Flattr button.
 	var flattrButton = document.createElement("a");
 	flattrButton.className = "FlattrButton";
 	flattrButton.href = "http://goo.gl/WxDzR";
@@ -137,6 +166,7 @@ window.addEventListener("load", function(){
 	socialSection.appendChild(flattrButton);
 	socialSection.appendChild(flattrNoScript);
 
+	// Add the PayPal donation button.
 	var payPalForm = document.createElement("form");
 	payPalForm.action = "https://www.paypal.com/cgi-bin/webscr";
 	payPalForm.method = "post";
@@ -167,6 +197,7 @@ window.addEventListener("load", function(){
 	payPalForm.appendChild(payPalImg);
 	socialSection.appendChild(payPalForm);
 
+	// Script required for the Google+ "+1" button.
 	(function(){
 		var po = document.createElement("script");
 		po.type = "text/javascript";
@@ -176,6 +207,7 @@ window.addEventListener("load", function(){
 		s.parentNode.insertBefore(po, s);
 	})();
 
+	// Script required for the Flattr button.
 	/* <![CDATA[ */
 	(function(){
 		var s = document.createElement("script"), t = document.getElementsByTagName("script")[0];
@@ -186,7 +218,14 @@ window.addEventListener("load", function(){
 	})();
 	/* ]]> */
 });
+
 function setUp(option, subOptions){
+	// Fill the [option] (string) checkbox from localStorage, indent any
+	//		[subOptions] (array of strings) that are dependent on [option]
+	//		and disable them if [option] is unchecked, and add the
+	//		listener to change their respective localStorage values and
+	//		disable their [subOptions] if their value changes.
+	
 	if (localStorage[option] == (( !(document.getElementById(option).checked))?"yes":"no")){
 		document.getElementById(option).checked = !(document.getElementById(option).checked);
 	}
@@ -205,21 +244,36 @@ function setUp(option, subOptions){
 		}
 	});
 }
+
 function listenStore(element, action){
+// If [element] has its value changed, if a key is pressed on it, or if it
+//		is clicked, fire [action] (function).
+	
 	var events = ["change", "keyup", "click"];
 	for ( var e in events){
 		document.getElementById(element).addEventListener(events[e], action);
 	}
 }
+
 function clearBookmarks(){
+// Hide the URL suggestion list.
+	
 	var newUl = document.createElement("ul");
 	document.getElementById("autoTermsContainer").getElementsByTagName("div")[0].getElementsByTagName("div")[0].replaceChild(newUl, suggestionsUl);
 	suggestionsUl = newUl;
 }
+
 function suggest(){
+// Display a list of five suggested URLs to use as keywords in the
+//		keywords textbox, compiled from the user's bookmarks and
+//		history.
+	
 	localStorage["autoTerms"] = document.getElementById("autoTerms").value;
 	var ul = document.createElement("ul");
 	if (document.getElementById("autoTerms").value != ""){
+		// Find where the user's cursor is in the textbox, and grab the
+		//		value of the text between any potential commas to the
+		//		left and right of the cursor.
 		var atVal = document.getElementById("autoTerms").value;
 		var atPos = document.getElementById("autoTerms").selectionStart;
 		var start = atVal.lastIndexOf(",", (atPos - 1));
@@ -232,17 +286,25 @@ function suggest(){
 		if (end == -1){
 			end = undefined;
 		}
-		var searchTerm = atVal.substring(start, end).trim().replace(/^(http|https|ftp|file):\/\//, "");
+		var searchTerm = atVal.substring(start, end).trim().replace(/^(http|https|ftp|file):\/\//, ""); // Take out any URL scheme for better search results.
 		if (searchTerm != ""){
+			// Search the user's bookmarks and history for the text and
+			//		add results to an array [suggestions] with its URL,
+			//		page title, and search origin.
 			chrome.bookmarks.search(searchTerm, function(bookmarks){
 				chrome.history.search({
 					text: searchTerm,
 					maxResults: 10
+					// I chose to search for 10 history results instead of just 5
+					//		in case some of the history results match the bookmark
+					//		results.
 				}, function(history){
 					var marks = 0;
 					var suggestions = new Array();
 					for ( var b in bookmarks){
 						if (suggestions.indexOf(bookmarks[b].url) == -1){
+							// Make sure that the URL isn't already in the array.
+							
 							suggestions.push({
 								url: bookmarks[b].url,
 								title: bookmarks[b].title,
@@ -261,6 +323,12 @@ function suggest(){
 					}
 					for ( var s in suggestions){
 						if ((suggestions[s].url != atVal.substring(start, end).trim()) & (checkUrl(suggestions[s].url))){
+						// Make sure that the URL is not exactly what the user typed
+						//		and that the URL can be opened in Incognito.
+							
+							// Create the <li> list item in the suggested URL list. If
+							//		the user clicks it, replace the text the user typed
+							//		with the URL of the list item.
 							marks++;
 							var li = document.createElement("li");
 							var header = document.createElement("header");
@@ -286,18 +354,25 @@ function suggest(){
 							})(atVal.substring(0, start) + suggestions[s].url + ((end != undefined)?atVal.substring(end):"")));
 							ul.appendChild(li);
 							if (marks >= 5){
+							// Limit the number of list items to 5.
+								
 								break;
 							}
 						}
 					}
+					
+					// Replace the already existing [suggestionsUl] element with the [ul]
+					//		element that we just created.
 					document.getElementById("autoTermsContainer").getElementsByTagName("div")[0].getElementsByTagName("div")[0].replaceChild(ul, suggestionsUl);
 					suggestionsUl = ul;
 				});
 			});
 		} else{
+		// If the search term is blank, hide the suggestions list.
 			clearBookmarks();
 		}
 	} else{
+	// If the entire keywords box is blank, hide the suggestions list.
 		clearBookmarks();
 	}
 }
