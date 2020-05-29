@@ -755,10 +755,9 @@ function createTab(incognito) {
 				// Create an entirely new window in which to place the tab.
 				chrome.windows.create({url: queuedTabs[incognito][0].url,
 						        type: "popup",
-						       height: 400,
+						       top:50,
+						       height: 800,
 						       width: 800,
-						       top:400,
-							left:400,
 						       incognito: incognito,
 						       focused: true}, function(createdWin){
 					if (isAllowed){
