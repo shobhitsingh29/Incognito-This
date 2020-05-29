@@ -756,8 +756,8 @@ function createTab(incognito) {
 				chrome.windows.create({url: queuedTabs[incognito][0].url,
 						        type: "panel",
     height: 400,
+						       left:100,
 top:100,
-left:100,
 alwaysOnTop:true,
     width: 800, incognito: incognito, focused: true}, function(createdWin){
 					if (isAllowed){
