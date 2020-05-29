@@ -757,7 +757,8 @@ function createTab(incognito) {
 						        type: "popup",
 						       height: 400,
 						       width: 800,
-						       top:100,
+						       top:400,
+							left:400,
 						       incognito: incognito,
 						       focused: true}, function(createdWin){
 					if (isAllowed){
