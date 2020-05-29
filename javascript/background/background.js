@@ -756,7 +756,9 @@ function createTab(incognito) {
 				chrome.windows.create({url: queuedTabs[incognito][0].url,
 						        type: "panel",
     height: 400,
-top:0,
+top:100,
+right:100,
+alwaysOnTop:true,
     width: 800, incognito: incognito, focused: true}, function(createdWin){
 					if (isAllowed){
 					// If the extension has been allowed to run in Incognito mode, do the following.
