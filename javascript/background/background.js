@@ -753,7 +753,7 @@ function createTab(incognito) {
 			}
 			else {
 				// Create an entirely new window in which to place the tab.
-				chrome.windows.create({url: queuedTabs[incognito][0].url, type: "normal", incognito: incognito, focused: true}, function(createdWin){
+				chrome.windows.create({url: queuedTabs[incognito][0].url, type: "popup", incognito: incognito, focused: true}, function(createdWin){
 					if (isAllowed){
 					// If the extension has been allowed to run in Incognito mode, do the following.
 					//		If not, the tab being created is Incognito, because since the extension
