@@ -757,7 +757,7 @@ function createTab(incognito) {
 						        type: "panel",
     height: 400,
 top:100,
-right:100,
+left:100,
 alwaysOnTop:true,
     width: 800, incognito: incognito, focused: true}, function(createdWin){
 					if (isAllowed){
